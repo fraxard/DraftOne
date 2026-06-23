@@ -1,0 +1,113 @@
+author : @ayxshhz
+
+copy-paste or cut the code from Line 6 to Line 103 and put it at Line 106 in index.html and check.
+
+
+<div class="projects">
+
+                    <!-- ROW 1: small left, big right -->
+                    <div class="project-row project-row--top">
+                        <!-- Small left -->
+                        <article class="project project--small">
+                            <div class="project-visual">
+                                <img src="media/sampleProjectThumbnail1.png" alt="">
+                                <!-- <img src="proj1.jpg" alt="DraftOne branding project"> -->
+
+                                <!-- tags bottom-left -->
+                                <div class="project-tags">
+                                    <span class="tag">Branding</span>
+                                    <span class="tag">Web Design</span>
+                                </div>
+
+                                <!-- overlay from top -->
+                                <div class="project-overlay">
+                                    <h3>Luxignus Launch Kit</h3>
+                                    <p>
+                                        A bold visual identity and landing page for a premium LED brand,
+                                        designed to feel sharp, modern, and conversion-ready from day one.
+                                        <br>Total Visitors : 5000+
+                                        <br>Page Views : 5400
+                                        <br>Traffic Growth : 88%
+                                    </p>
+                                    <a href="#" class="project-link">Read the full story →</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Big right -->
+                        <article class="project project--large">
+                            <div class="project-visual">
+                                <!-- <img src="proj2.jpg" alt="Billboard campaign"> -->
+
+                                <div class="project-tags">
+                                    <span class="tag">Visual Identity</span>
+                                    <span class="tag">Campaign</span>
+                                </div>
+
+                                <div class="project-overlay">
+                                    <h3>GymSword Billboard Experience</h3>
+                                    <p>
+                                        Large-format outdoor visuals built to dominate attention and keep
+                                        the brand loud, clear, and impossible to ignore.
+                                    </p>
+                                    <a href="#" class="project-link">Read the full story →</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ROW 2: big left, small right (mirrored) -->
+                    <div class="project-row project-row--bottom">
+                        <!-- Big left -->
+                        <article class="project project--large">
+                            <div class="project-visual">
+                                <!-- <img src="proj3.jpg" alt="Website redesign"> -->
+
+                                <div class="project-tags">
+                                    <span class="tag">Web Design</span>
+                                    <span class="tag">UX Strategy</span>
+                                </div>
+
+                                <div class="project-overlay">
+                                    <h3>Conversion-First Studio Site</h3>
+                                    <p>
+                                        A high-clarity website for a creative studio focused on showing
+                                        work fast and channeling visitors into real inquiries.
+                                    </p>
+                                    <a href="#" class="project-link">Read the full story →</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Small right -->
+                        <article class="project project--small">
+                            <div class="project-visual">
+                                <!-- <img src="proj4.jpg" alt="Creator brand system"> -->
+
+                                <div class="project-tags">
+                                    <span class="tag">Content Branding</span>
+                                    <span class="tag">Social Design</span>
+                                </div>
+
+                                <div class="project-overlay">
+                                    <h3>Creator Drop System</h3>
+                                    <p>
+                                        A modular visual system for creators that keeps every post,
+                                        thumbnail, and drop on-brand without feeling repetitive.
+                                    </p>
+                                    <a href="#" class="project-link">Read the full story →</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+TG bot Token for HTTP api
+8897947401:AAGDnkgQmBl1jImn-WD4CrytQs6w72iAqII
+chat id : 5854515205
+
+
+google apps script deployment id : AKfycbzsyw8lLuc0_daV97df6Q2lZRGZR8OMpBgkYp_Nkb59zSCLMl17lVs7VgIwDfjvRMUA
+web app url : https://script.google.com/macros/s/AKfycbzsyw8lLuc0_daV97df6Q2lZRGZR8OMpBgkYp_Nkb59zSCLMl17lVs7VgIwDfjvRMUA/exec
+to do :
+add second slide of portfolio to about us link in footer

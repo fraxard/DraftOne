@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Session | DraftOne</title>
+    <link rel="icon" type="image/png" href="draftone logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+    <div id="mainPage">
+        <div id="navbar">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="draftOne_tp.png" alt="DraftOne Logo">
+                </a>
+            </div>
+            <a href="#cta" class="nav-link" data-text="Schedule a Session">
+                <span>Schedule a Session</span>
+            </a>
+            <a href="#site-footer" class="nav-link" data-text="Social & Links">
+                <span>Social & Links</span>
+            </a>
+            <!-- Menu Toggle Button -->
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <section class="schedule-section">
+            <div class="calendly-wrapper">
+
+                <!-- Custom Loader -->
+                <div class="calendly-loader" id="calendlyLoader">
+                    <div class="loader-text">Preparing your session</div>
+                    <div class="loader-bar"></div>
+                </div>
+
+                <!-- Calendly -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/infodraftone/30min" style="opacity:0"
+                    id="calendlyWidget">
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <footer id="site-footer">
+            <div class="footer-inner">
+
+                <!-- TOP: right-side link columns -->
+                <div class="footer-top">
+                    <div class="footer-columns">
+                        <div class="footer-column">
+                            <h4 class="footer-heading">COMPANY</h4>
+                            <ul>
+                                <li><a href="#">Works</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4 class="footer-heading">SOCIAL</h4>
+                            <ul>
+                                <li><a href="#">Behance</a></li>
+                                <li><a href="https://www.instagram.com/draftone.in">Instagram</a></li>
+                                <li><a href="#">X</a></li>
+                                <li><a href="#">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MIDDLE: big brand name -->
+                <div class="footer-logo-row">
+                    <span class="footer-brand">DRAFTONE</span>
+                </div>
+
+                <!-- BOTTOM: copyright only -->
+                <div class="footer-bottom">
+                    <p>© DraftOne Media Productions. All Rights Reserved.</p>
+                </div>
+
+            </div>
+        </footer>
+        <!-- Full-screen overlay menu -->
+        <nav class="fullscreen-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#cta">Schedule a Session</a></li>
+            <li><a href="#site-footer">Social</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+        <script src="script.js"></script>
+
+        <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <script>
+            const checkCalendly = setInterval(() => {
+                const iframe = document.querySelector('.calendly-inline-widget iframe');
+
+                if (iframe) {
+                    document.getElementById('calendlyLoader').style.opacity = '0';
+                    document.getElementById('calendlyWidget').style.opacity = '1';
+
+                    setTimeout(() => {
+                        document.getElementById('calendlyLoader').style.display = 'none';
+                    }, 600);
+
+                    clearInterval(checkCalendly);
+                }
+            }, 300);
+        </script>
+        <script>
+            const loader = document.getElementById("calendlyLoader");
+            const widget = document.getElementById("calendlyWidget");
+
+            const interval = setInterval(() => {
+                const iframe = widget.querySelector("iframe");
+
+                if (!iframe) return;
+
+                // wait until iframe DOM is painted
+                iframe.onload = () => {
+                    loader.style.opacity = "0";
+
+                    setTimeout(() => {
+                        loader.style.display = "none";
+                        widget.style.opacity = "1";
+                        widget.style.pointerEvents = "auto";
+                    }, 600);
+                };
+
+                clearInterval(interval);
+            }, 300);
+            Calendly.initPopupWidget({
+                url: 'https://calendly.com/infodraftone/30min'
+            });
+        </script>
+
+
+    </div>
+</body>
+
+</html>
