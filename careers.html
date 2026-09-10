@@ -101,7 +101,7 @@
                 </p>
 
                 <!-- Application Form -->
-                <form class="careers-apply-form" id="careersForm" novalidate>
+                <form class="careers-apply-form" id="careersForm" method="POST" action="/api/application" novalidate>
                     <input type="hidden" id="appJobId" name="jobId" value="sales-business-development-intern">
                     <!-- Honeypot anti-spam protection -->
                     <div style="display:none;" aria-hidden="true">
@@ -336,10 +336,12 @@
                     }
 
                     try {
+                        console.log('APPLICATION REQUEST METHOD: POST', '/api/application');
                         const response = await fetch('/api/application', {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
                             },
                             body: JSON.stringify({
                                 jobId,

@@ -37,9 +37,22 @@ const ALLOWED_JOBS = {
 };
 
 module.exports = async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Allow', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    return res.status(200).end();
+  }
+
+  console.log('[DraftOne Application API] Received request:', req.method, req.url);
+
   // 1. Only allow POST method
   if (req.method !== 'POST') {
-    res.setHeader('Allow', ['POST']);
+    res.setHeader('Allow', ['POST', 'OPTIONS']);
     return res.status(405).json({
       success: false,
       error: 'Method ' + req.method + ' Not Allowed'
