@@ -122,9 +122,22 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 300;
-  /* background-color: red; */
+  z-index: 1010;
+  pointer-events: none;
+}
 
+#navbar .menu-toggle,
+#navbar a,
+#navbar .nav-logo {
+  pointer-events: auto;
+}
+
+body.menu-open #navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
 }
 
 .nav-logo img {
@@ -230,59 +243,81 @@ body.menu-open .navbar-light .menu-toggle .bar {
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 201;
-  /* above menu */
+  z-index: 1020;
+  padding: 8px;
+  margin: -8px;
+  box-sizing: content-box;
 }
 
 .menu-toggle .bar {
   display: block;
   height: 3px;
+  width: 100%;
   border-radius: 999px;
-  background: #f9fafb;
-  transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease, bottom 0.3s ease;
+  background: var(--color-text);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, background-color 0.3s ease;
   position: relative;
+  transform-origin: center;
+}
+
+/* Light Navbar (over light editorial hero) */
+.navbar-light .menu-toggle .bar {
+  background: var(--color-text);
+}
+
+body.menu-open .navbar-light .menu-toggle .bar {
+  background: #ffffff !important;
 }
 
 /* Fullscreen menu overlay */
 .fullscreen-menu {
   position: fixed;
   inset: 0;
-  background: rgba(5, 5, 10, 0.9);
-  /* low transparency so a bit of page is visible */
-  backdrop-filter: blur(8px);
+  background: rgba(5, 5, 10, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-100%);
-  transition: transform 0.45s ease;
-  z-index: 200;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Menu content */
 .fullscreen-menu ul {
   list-style: none;
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
-.fullscreen-menu li+li {
-  margin-top: 1.5rem;
+.fullscreen-menu li {
+  will-change: transform, opacity;
+}
+
+.fullscreen-menu li + li {
+  margin-top: clamp(1.25rem, 2.5vh, 2rem);
 }
 
 .fullscreen-menu a {
   text-decoration: none;
-  font-size: clamp(2rem, 4vw, 3rem);
-  /* big & responsive */
-  font-family: "Lexend", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-family: var(--font-primary);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #f9fafb;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+  display: inline-block;
 }
 
-.fullscreen-menu a:hover {
-  opacity: 0.75;
+.fullscreen-menu a:hover,
+.fullscreen-menu a:focus-visible {
+  opacity: 0.65;
   transform: translateY(-2px);
+  outline: none;
 }
 
 /* ====== OPEN STATE (when .menu-open is on body) ====== */
@@ -292,31 +327,29 @@ body.menu-open {
   /* lock scroll when menu is open */
 }
 
-/* Slide menu down */
-body.menu-open .fullscreen-menu {
-  transform: translateY(0);
+/* Morph hamburger into X */
+body.menu-open .menu-toggle .bar {
+  background: #ffffff !important;
 }
 
-/* Morph hamburger into X */
 body.menu-open .menu-toggle .bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(8.5px) rotate(45deg);
 }
 
 body.menu-open .menu-toggle .bar:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
 body.menu-open .menu-toggle .bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-8.5px) rotate(-45deg);
 }
 
 /* When menu is open, hide logo + normal nav links */
 body.menu-open #navbar img,
 body.menu-open #navbar a {
   visibility: hidden;
-  /* or use display:none if you prefer */
   pointer-events: none;
-  /* so they can't be clicked */
 }
 
 
@@ -1943,38 +1976,92 @@ body.menu-open #navbar a {
 
 
 
-/* Schedule Page */
-.calendly-wrapper {
-  position: relative;
-  min-height: 900px;
+/* ==========================================================================
+   SCHEDULE PAGE — SINGLE VIEWPORT EDITORIAL LAYOUT
+   ========================================================================== */
+html.schedule-html,
+body.schedule-page {
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Single viewport: completely removes outer page scroll */
+  background-color: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Loader overlay */
+.schedule-main {
+  flex: 1 1 auto;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 40px 24px 40px; /* Clears 80px navbar and matches 40px horizontal margin */
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .schedule-main {
+    padding: 64px 16px 14px 16px; /* Matches 64px navbar and 16px mobile margin */
+  }
+}
+
+@media (max-width: 600px) {
+  .schedule-main {
+    padding: 64px 12px 12px 12px;
+  }
+}
+
+.schedule-container {
+  width: 100%;
+  max-width: 1120px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.calendly-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Light theme loader */
 .calendly-loader {
   position: absolute;
   inset: 0;
-  background: #0b0b0b;
+  background: var(--color-background);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 5;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.35s ease;
 }
 
 .loader-text {
-  color: #fff;
-  letter-spacing: 0.08em;
-  font-size: 14px;
-  margin-bottom: 14px;
-  opacity: 0.8;
+  color: var(--color-text-muted);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
 }
 
-/* Minimal animated bar */
 .loader-bar {
   width: 120px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-border);
   position: relative;
   overflow: hidden;
 }
@@ -1985,8 +2072,7 @@ body.menu-open #navbar a {
   left: -40%;
   width: 40%;
   height: 100%;
-  background: #ff4d6d;
-  /* your pink-red */
+  background: var(--color-text);
   animation: loadbar 1.2s infinite ease;
 }
 
@@ -1996,40 +2082,35 @@ body.menu-open #navbar a {
   }
 }
 
-.schedule-section {
-  min-height: 100vh;
-  /* background: #0b0b0b; */
-  padding: 120px 5vw 60px;
-  padding-top: 120px;
-}
-
+/* Inline Calendly Widget: Fits completely into viewport */
 .calendly-inline-widget {
-  min-height: 750px;
   width: 100%;
-  height: 700px;
-  border-radius: 16px;
+  height: 100% !important;
+  min-height: 0 !important;
+  flex: 1 1 auto;
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  background: #0b0b0b;
-  border-radius: 16px;
-  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
-  background: #0b0b0b;
-  transition: opacity 0.8s ease;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: opacity 0.4s ease;
   opacity: 0;
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
-  .schedule-section {
-    padding: 100px 16px 40px;
-  }
-
-  .calendly-inline-widget {
-    height: 1100px;
-  }
+.calendly-inline-widget iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  border: none !important;
+  background: transparent !important;
 }
 
-.calendly-inline-widget iframe {
-  background: transparent !important;
+@media (max-width: 600px) {
+  .calendly-inline-widget {
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
 }
 
 

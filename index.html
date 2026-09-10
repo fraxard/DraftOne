@@ -12,28 +12,30 @@
 
 
 <body id="top">
+    <!-- Navigation Bar: placed outside smooth-wrapper so it is never trapped in ScrollSmoother transform stacking context -->
+    <div id="navbar" class="navbar-light">
+        <div class="nav-logo">
+            <!-- <a href="index.html">
+                <img src="draftOne_tp.png" alt="DraftOne Logo">
+            </a> -->
+        </div>
+        <!-- <a href="#cta" class="nav-link" data-text="Schedule a Session">
+            <span>Schedule a Session</span>
+        </a> -->
+        <!-- <a href="#site-footer" class="nav-link" data-text="Social & Links">
+            <span>Social & Links</span>
+        </a> -->
+        <!-- Menu Toggle Button (morphs into X when menu is open) -->
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fullscreen-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+
     <div id="smooth-wrapper">
         <div id="smooth-content">
-            <div id="navbar" class="navbar-light">
-            <div class="nav-logo">
-                <!-- <a href="index.html">
-                    <img src="draftOne_tp.png" alt="DraftOne Logo">
-                </a> -->
-            </div>
-            <!-- <a href="#cta" class="nav-link" data-text="Schedule a Session">
-                <span>Schedule a Session</span>
-            </a> -->
-            <!-- <a href="#site-footer" class="nav-link" data-text="Social & Links">
-                <span>Social & Links</span>
-            </a> -->
-            <!-- Menu Toggle Button -->
-            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
-        <section class="hero hero--editorial" aria-label="Introduction">
+            <section class="hero hero--editorial" aria-label="Introduction">
             <div class="hero-container">
                 <!-- Upper Brand Wordmark & Primary CTA -->
                 <div class="hero-top">
@@ -536,11 +538,11 @@
     </div>
 
     <!-- Full-screen overlay menu -->
-    <nav class="fullscreen-menu">
+    <nav class="fullscreen-menu" id="fullscreen-menu" aria-hidden="true" aria-label="Main navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#cta">Schedule a Session</a></li>
-            <li><a href="#site-footer">Social</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="careers.html">Careers</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
