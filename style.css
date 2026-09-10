@@ -2128,79 +2128,118 @@ body.schedule-page {
 
 
 
-/* contact page */
-.contact-page {
+/* ==========================================================================
+   CONTACT PAGE — LIGHT EDITORIAL THEME
+   ========================================================================== */
+body.contact-page-body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.contact-main {
+  width: 100%;
+}
+
+.contact-section {
+  width: 100%;
+  background-color: var(--color-background);
+  padding: clamp(7rem, 12vh, 9.5rem) var(--page-padding) clamp(4rem, 7vh, 6rem);
+  box-sizing: border-box;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 4.5fr 5.5fr;
+  gap: clamp(3rem, 6vw, 6.5rem);
+  align-items: start;
+}
+
+/* LEFT COLUMN — Editorial Contact Info */
+.contact-info {
   display: flex;
-  min-height: calc(100vh - 80px);
-  padding: 0px 100px;
-  /* padding-top: 80px; */
-  /* background: #f4f8fb; */
-  background-color: #050509;
-  gap: 80px;
+  flex-direction: column;
 }
 
-/* LEFT */
-.contact-left {
-  width: 40%;
+.contact-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
 }
 
-.contact-left h2 {
-  font-size: 2.5rem;
-  font-family: "Roboto Slab", 'Times New Roman', Times, serif;
-  margin-bottom: 10px;
+.contact-description {
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0 0 clamp(2.5rem, 5vh, 3.5rem) 0;
 }
 
-.contact-left p {
-  color: #555;
-  font-family: "Lexend", sans-serif;
-  font-size: 1rem;
-  margin-bottom: 30px;
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.8rem, 3vh, 2.4rem);
 }
 
 .contact-block {
-  margin-bottom: 30px;
+  margin: 0;
 }
 
-.contact-block h4 {
-  font-weight: 600;
-  font-family: "Roboto Slab", 'Times New Roman', Times, serif;
-  margin-bottom: 8px;
+.contact-label {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
 }
 
-.socials span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: #e5e5e5;
-  margin-right: 10px;
-  cursor: pointer;
+.contact-value {
+  font-family: var(--font-primary);
+  font-size: clamp(1.1rem, 1.25vw, 1.25rem);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* RIGHT */
-.contact-right {
-  width: 60%;
+.contact-link {
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast), opacity var(--transition-fast);
 }
 
+.contact-link:hover {
+  opacity: 0.75;
+  border-color: var(--color-text);
+}
 
-
-
-
-
-
-
-
-
+/* RIGHT COLUMN — Contact Form */
+.contact-form-wrap {
+  width: 100%;
+}
 
 .contact-form {
   width: 100%;
 }
 
-/* SHARED */
+/* Form Controls with Floating Animated Labels */
 .form-control {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: clamp(2.2rem, 4vh, 3rem);
   width: 100%;
 }
 
@@ -2208,16 +2247,20 @@ body.schedule-page {
 .form-control textarea {
   background: transparent;
   border: none;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1.5px solid var(--color-border);
   width: 100%;
-  padding: 15px 0;
-  font-size: 18px;
-  color: #fff;
+  padding: 14px 0 10px;
+  font-size: 1.05rem;
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  border-radius: 0;
+  transition: border-color 0.25s ease;
+  box-sizing: border-box;
 }
 
 .form-control textarea {
-  resize: none;
-  height: 120px;
+  resize: vertical;
+  min-height: 110px;
 }
 
 .form-control input:focus,
@@ -2225,62 +2268,83 @@ body.schedule-page {
 .form-control textarea:focus,
 .form-control textarea:valid {
   outline: none;
-  /* border-bottom-color: #2563eb; */
-  border-bottom-color: tomato;
+  border-bottom-color: var(--color-text);
 }
 
-/* LABEL */
+/* Floating Label */
 .form-control label {
   position: absolute;
-  top: 15px;
+  top: 14px;
   left: 0;
   pointer-events: none;
 }
 
 .form-control label span {
   display: inline-block;
-  font-size: 18px;
-  color: #777;
+  font-size: 1.05rem;
+  font-family: var(--font-primary);
+  color: var(--color-text-muted);
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* ANIMATION */
-.form-control input:focus+label span,
-.form-control input:valid+label span,
-.form-control textarea:focus+label span,
-.form-control textarea:valid+label span {
-  color: tomato;
-  transform: translateY(-30px);
+/* Floating Animation */
+.form-control input:focus + label span,
+.form-control input:valid + label span,
+.form-control textarea:focus + label span,
+.form-control textarea:valid + label span {
+  color: var(--color-text);
+  transform: translateY(-28px);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-
-@media (max-width: 900px) {
-  .contact-page {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-
-  .contact-left,
-  .contact-right {
-    width: 100%;
-  }
+/* Form Status Message */
+.form-status {
+  display: none;
+  margin-bottom: 1.8rem;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
+.form-status--success {
+  display: block;
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.form-status--error {
+  display: block;
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* Submit Button */
 .submitbutton {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   border: none;
   background: none;
-  color: #0f1923;
+  color: var(--color-text);
   cursor: pointer;
   position: relative;
-  padding: 8px;
-  margin-bottom: 20px;
+  padding: 6px;
+  margin-bottom: 10px;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  transition: all .15s ease;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+}
+
+.submitbutton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .submitbutton::before,
@@ -2290,9 +2354,9 @@ body.schedule-page {
   position: absolute;
   right: 0;
   left: 0;
-  height: calc(50% - 5px);
-  border: 1px solid #7D8082;
-  transition: all .15s ease;
+  height: calc(50% - 4px);
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
 }
 
 .submitbutton::before {
@@ -2305,33 +2369,20 @@ body.schedule-page {
   border-top-width: 0;
 }
 
-.submitbutton:active,
-.submitbutton:focus {
-  outline: none;
-}
-
-.submitbutton:active::before,
-.submitbutton:active::after {
-  right: 3px;
-  left: 3px;
-}
-
-.submitbutton:active::before {
-  top: 3px;
-}
-
-.submitbutton:active::after {
-  bottom: 3px;
+.submitbutton:hover:not(:disabled)::before,
+.submitbutton:hover:not(:disabled)::after {
+  border-color: var(--color-text);
 }
 
 .button_lg {
   position: relative;
   display: block;
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #0f1923;
+  padding: 12px 26px;
+  color: var(--color-background);
+  background-color: var(--color-text);
   overflow: hidden;
   box-shadow: inset 0px 0px 0px 1px transparent;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .button_lg::before {
@@ -2342,7 +2393,7 @@ body.schedule-page {
   left: 0;
   width: 2px;
   height: 2px;
-  background-color: #0f1923;
+  background-color: var(--color-text);
 }
 
 .button_lg::after {
@@ -2353,8 +2404,8 @@ body.schedule-page {
   bottom: 0;
   width: 4px;
   height: 4px;
-  background-color: #0f1923;
-  transition: all .2s ease;
+  background-color: var(--color-text);
+  transition: all 0.2s ease;
 }
 
 .button_sl {
@@ -2364,25 +2415,32 @@ body.schedule-page {
   bottom: -1px;
   left: -8px;
   width: 0;
-  background-color: tomato;
+  background-color: #333333;
   transform: skew(-15deg);
-  transition: all .2s ease;
+  transition: all 0.25s ease;
 }
 
 .button_text {
   position: relative;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
-.submitbutton:hover {
-  color: #0f1923;
-}
-
-.submitbutton:hover .button_sl {
+.submitbutton:hover:not(:disabled) .button_sl {
   width: calc(100% + 15px);
 }
 
-.submitbutton:hover .button_lg::after {
-  background-color: #fff;
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-section {
+    padding: 5.5rem 16px 3.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
 }
 
 

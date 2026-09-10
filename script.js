@@ -308,50 +308,126 @@ if (backToTop) {
   });
 }
 
-// if (contactForm) {
-//   contactForm.addEventListener("submit", async (e) => {
-//     e.preventDefault();
+// ==========================================================================
+// CONTACT FORM SUBMISSION HANDLER
+// ==========================================================================
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-//     const form = e.target;
+    const form = e.target;
+    const submitBtn = form.querySelector("#submitBtn") || form.querySelector("button[type='submit']");
+    const buttonText = submitBtn ? submitBtn.querySelector(".button_text") : null;
+    const formStatus = document.getElementById("formStatus");
 
-//     const data = {
-//       name: form.name.value.trim(),
-//       email: form.email.value.trim(),
-//       message: form.message.value.trim()
-//     };
+    // Clear previous status
+    if (formStatus) {
+      formStatus.textContent = "";
+      formStatus.className = "form-status";
+      formStatus.style.display = "none";
+    }
 
-//     try {
-//       const response = await fetch(
-//         "https://script.google.com/macros/s/AKfycbyDSEcGS6UI7Pc3RsZgCZu6iip-Vikzku_cxooYXW9rzBFudcTvEl9L0Z3jCTjkTH_l/exec",
-//         {
-//           method: "POST",
-//           body: new URLSearchParams(data)
-//         }
-//       );
+    // Extract inputs
+    const nameInput = form.name;
+    const emailInput = form.email;
+    const messageInput = form.message;
+    const websiteInput = form.website; // honeypot
 
-//       const text = await response.text();
-//       let result;
+    const name = nameInput ? nameInput.value.trim() : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const message = messageInput ? messageInput.value.trim() : "";
+    const honeypot = websiteInput ? websiteInput.value.trim() : "";
 
-//       try {
-//         result = JSON.parse(text);
-//       } catch (parseError) {
-//         throw new Error(`Invalid server response: ${text}`);
-//       }
+    function showStatus(messageText, isSuccess) {
+      if (!formStatus) return;
+      formStatus.textContent = messageText;
+      formStatus.className = `form-status form-status--${isSuccess ? 'success' : 'error'}`;
+      formStatus.style.display = "block";
+      if (!isSuccess && formStatus.scrollIntoView) {
+        formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
 
-//       if (!response.ok) {
-//         throw new Error(result.error || `Network error: ${response.status}`);
-//       }
+    // 1. Client-side validation: Name
+    if (!name || name.length < 2) {
+      showStatus("Please enter your name (at least 2 characters).", false);
+      if (nameInput) nameInput.focus();
+      return;
+    }
 
-//       if (result.success) {
-//         alert("Message sent! Thank you for reaching out.");
-//         form.reset();
-//       } else {
-//         throw new Error(result.error || "Failed to send message.");
-//       }
-//     } catch (error) {
-//       alert(`Unable to send message. Please try again later.\n${error.message}`);
-//       console.error("Contact form submit error:", error);
-//     }
-//   });
-// }
+    // 2. Client-side validation: Email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showStatus("Please enter a valid email address.", false);
+      if (emailInput) emailInput.focus();
+      return;
+    }
+
+    // 3. Client-side validation: Message
+    if (!message || message.length < 5) {
+      showStatus("Please enter your message (at least 5 characters).", false);
+      if (messageInput) messageInput.focus();
+      return;
+    }
+
+    // Prevent duplicate submissions: disable button & show loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("is-submitting");
+    }
+    const originalText = buttonText ? buttonText.textContent : "Submit Now";
+    if (buttonText) {
+      buttonText.textContent = "Sending...";
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          website: honeypot
+        })
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result || !result.success) {
+        // DO NOT fake success. Display the exact error from server
+        const errorMsg = (result && result.error)
+          ? result.error
+          : `Submission failed (status ${response.status}). Please try again or email admin@draftone.in.`;
+        showStatus(errorMsg, false);
+      } else {
+        // Real success confirmed by server
+        showStatus(result.message || "Thank you! Your message has been sent successfully.", true);
+        form.reset();
+        form.querySelectorAll("input, textarea").forEach(input => {
+          input.blur();
+        });
+      }
+    } catch (networkError) {
+      console.error("Contact form network error:", networkError);
+      showStatus(
+        "Unable to reach the server. Please check your connection or email us directly at admin@draftone.in.",
+        false
+      );
+    } finally {
+      // Re-enable submit button
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("is-submitting");
+      }
+      if (buttonText) {
+        buttonText.textContent = originalText;
+      }
+    }
+  });
+}
 
