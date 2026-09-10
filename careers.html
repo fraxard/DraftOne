@@ -1,11 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Careers | DraftOne</title>
+    <link rel="icon" type="image/png" href="draftone logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    nahi dunga job
+
+<body id="top" class="careers-page">
+    <!-- Navigation Bar: matches existing DraftOne landing page navbar -->
+    <div id="navbar" class="navbar-light">
+        <div class="nav-logo"></div>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fullscreen-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="careers-main">
+        <!-- Editorial Header -->
+        <header class="careers-header">
+            <span class="careers-eyebrow">CAREERS</span>
+            <h1 class="careers-title">WE'RE HIRING.</h1>
+            <p class="careers-subtitle">
+                We're always looking for ambitious people who want to build, sell, create, and grow with DraftOne.
+            </p>
+            <p class="careers-note">Explore the roles we're currently hiring for below.</p>
+        </header>
+
+        <!-- Current Openings Section -->
+        <section class="careers-openings-section" aria-labelledby="openings-heading">
+            <div class="careers-section-header">
+                <h2 id="openings-heading" class="careers-section-label">CURRENT OPENINGS</h2>
+                <span class="careers-openings-count">1 ROLE AVAILABLE</span>
+            </div>
+
+            <!-- Responsive 2-Column Grid (First card occupies left position; future roles slot in naturally) -->
+            <div class="careers-grid" id="careersGrid">
+                <!-- First Job Listing: Sales & Business Development Intern -->
+                <article class="careers-job-card" data-job-id="sales-business-development-intern">
+                    <div class="prof-photo">
+                        <div class="prof-photo-num">SALES</div>
+                        <div class="prof-avatar">SB</div>
+                        <div class="prof-status-badge">● OPEN</div>
+                    </div>
+
+                    <div class="prof-body">
+                        <div class="prof-handle">DRAFTONE / CAREERS</div>
+                        <h3 class="prof-name">SALES &amp;<br>BUSINESS<br>DEVELOPMENT INTERN</h3>
+                        <div class="prof-bio">
+                            Help DraftOne turn qualified leads into clients. You'll speak with prospects, understand their requirements, present our services, follow up, and help onboard new clients.
+                        </div>
+                    </div>
+
+                    <div class="prof-stats">
+                        <div class="pstat">
+                            <span class="psv">SALES</span>
+                            <span class="psl">ROLE</span>
+                        </div>
+                        <div class="pstat">
+                            <span class="psv">INTERN</span>
+                            <span class="psl">TYPE</span>
+                        </div>
+                        <div class="pstat">
+                            <span class="psv">CLIENT ACQ</span>
+                            <span class="psl">FOCUS</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="prof-btn" data-action="apply" data-job-id="sales-business-development-intern" data-job="Sales &amp; Business Development Intern">
+                        + APPLY NOW
+                    </button>
+                </article>
+
+                <!-- Future job slot (empty for now, ready for 2x5/2x6 expansion) -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Application Modal -->
+    <div class="careers-modal-backdrop" id="applyModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalRoleTitle">
+        <div class="careers-modal-card">
+            <div class="careers-modal-header">
+                <span class="careers-modal-badge">● APPLICATION PORTAL</span>
+                <button type="button" class="careers-modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+
+            <div class="careers-modal-body">
+                <span class="careers-modal-eyebrow">DRAFTONE / CAREERS</span>
+                <h2 class="careers-modal-title" id="modalRoleTitle">SALES &amp; BUSINESS DEVELOPMENT INTERN</h2>
+                <p class="careers-modal-summary">
+                    Help DraftOne turn qualified leads into clients. You'll speak with prospects, understand their requirements, present our services, follow up, and help onboard new clients.
+                </p>
+
+                <!-- Application Form -->
+                <form class="careers-apply-form" id="careersForm" novalidate>
+                    <input type="hidden" id="appJobId" name="jobId" value="sales-business-development-intern">
+                    <!-- Honeypot anti-spam protection -->
+                    <div style="display:none;" aria-hidden="true">
+                        <input type="text" name="_gotcha" id="appGotcha" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="careers-form-group">
+                        <label for="appName" class="careers-form-label">Full Name <span class="required">*</span></label>
+                        <input type="text" id="appName" name="name" class="careers-form-input" placeholder="e.g. Alex Morgan" required>
+                    </div>
+
+                    <div class="careers-form-row">
+                        <div class="careers-form-group">
+                            <label for="appEmail" class="careers-form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" id="appEmail" name="email" class="careers-form-input" placeholder="you@domain.com" required>
+                        </div>
+                        <div class="careers-form-group">
+                            <label for="appPhone" class="careers-form-label">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="appPhone" name="phone" class="careers-form-input" placeholder="+91 8808220635" required>
+                        </div>
+                    </div>
+
+                    <div class="careers-form-group">
+                        <label for="appResume" class="careers-form-label">Resume / CV Link <span class="required">*</span></label>
+                        <input type="url" id="appResume" name="resume" class="careers-form-input" placeholder="https://drive.google.com/... or LinkedIn / portfolio" required>
+                    </div>
+
+                    <div class="careers-form-group">
+                        <label for="appMessage" class="careers-form-label">Why do you want to join DraftOne? <span class="required">*</span></label>
+                        <textarea id="appMessage" name="message" class="careers-form-textarea" rows="3" placeholder="Tell us what excites you about this role..." required></textarea>
+                    </div>
+
+                    <!-- Submission error banner -->
+                    <div class="careers-form-notice" id="careersNotice" style="display: none;" role="alert"></div>
+
+                    <button type="submit" class="careers-modal-submit-btn" id="submitAppBtn">
+                        SUBMIT APPLICATION →
+                    </button>
+                </form>
+
+                <!-- Success View -->
+                <div class="careers-success-view" id="careersSuccessView" style="display: none;">
+                    <span class="careers-success-badge">● APPLICATION RECEIVED</span>
+                    <h3 class="careers-success-title">APPLICATION RECEIVED</h3>
+                    <p class="careers-success-message">
+                        Your application has been sent successfully.<br>
+                        We'll review your details and get back to you if there's a fit.
+                    </p>
+                    <button type="button" class="careers-modal-close-action-btn" id="successCloseBtn">
+                        DONE / CLOSE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global DraftOne Footer: matches index.html -->
+    <footer id="site-footer" class="site-footer">
+        <div class="footer-container">
+            <!-- BOTTOM: Copyright -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© DraftOne Media Productions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Full-screen overlay menu -->
+    <nav class="fullscreen-menu" id="fullscreen-menu" aria-hidden="true" aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- GSAP & Plugins -->
+    <script src="node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="node_modules/gsap/dist/ScrollTrigger.min.js"></script>
+    <script src="node_modules/gsap/dist/ScrollToPlugin.min.js"></script>
+    <script>
+        if (typeof gsap === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"><\/script>');
+            document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"><\/script>');
+            document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"><\/script>');
+        }
+    </script>
+    <script src="script.js"></script>
+
+    <!-- Application Modal Controller & Future Job Extensibility -->
+    <script>
+        (function() {
+            // Future jobs data structure: Easily add new openings without redesigning the grid
+            window.DRAFTONE_JOBS = [
+                {
+                    id: "sales-business-development-intern",
+                    title: "SALES & BUSINESS DEVELOPMENT INTERN",
+                    summary: "Help DraftOne turn qualified leads into clients. You'll speak with prospects, understand their requirements, present our services, follow up, and help onboard new clients."
+                }
+            ];
+
+            const modal = document.getElementById('applyModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const successCloseBtn = document.getElementById('successCloseBtn');
+            const applyButtons = document.querySelectorAll('[data-action="apply"]');
+            const form = document.getElementById('careersForm');
+            const successView = document.getElementById('careersSuccessView');
+            const notice = document.getElementById('careersNotice');
+            const submitBtn = document.getElementById('submitAppBtn');
+            const jobIdInput = document.getElementById('appJobId');
+            const titleEl = document.getElementById('modalRoleTitle');
+
+            let isSubmitting = false;
+
+            function openModal(roleName, jobId) {
+                if (!modal) return;
+                if (roleName && titleEl) titleEl.textContent = roleName;
+                if (jobId && jobIdInput) jobIdInput.value = jobId;
+
+                // Reset modal state on open
+                if (form) {
+                    form.style.display = 'flex';
+                    form.reset();
+                }
+                if (successView) successView.style.display = 'none';
+                if (notice) notice.style.display = 'none';
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'SUBMIT APPLICATION &rarr;';
+                }
+                isSubmitting = false;
+
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            applyButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const role = btn.getAttribute('data-job') || 'Sales & Business Development Intern';
+                    const id = btn.getAttribute('data-job-id') || 'sales-business-development-intern';
+                    openModal(role, id);
+                });
+            });
+
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+
+            // Handle Application Submission
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    if (isSubmitting) return;
+
+                    const nameInput = document.getElementById('appName');
+                    const emailInput = document.getElementById('appEmail');
+                    const phoneInput = document.getElementById('appPhone');
+                    const resumeInput = document.getElementById('appResume');
+                    const msgInput = document.getElementById('appMessage');
+                    const gotchaInput = document.getElementById('appGotcha');
+
+                    const name = nameInput ? nameInput.value.trim() : '';
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    const phone = phoneInput ? phoneInput.value.trim() : '';
+                    const resume = resumeInput ? resumeInput.value.trim() : '';
+                    const message = msgInput ? msgInput.value.trim() : '';
+                    const _gotcha = gotchaInput ? gotchaInput.value : '';
+                    const jobId = jobIdInput ? jobIdInput.value : 'sales-business-development-intern';
+
+                    // Client-side validation
+                    if (!name || name.length < 2) {
+                        showError('Please enter your full name (at least 2 characters).');
+                        nameInput?.focus();
+                        return;
+                    }
+
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!email || !emailRegex.test(email)) {
+                        showError('Please enter a valid email address.');
+                        emailInput?.focus();
+                        return;
+                    }
+
+                    if (!phone || phone.length < 6) {
+                        showError('Please enter a valid phone number.');
+                        phoneInput?.focus();
+                        return;
+                    }
+
+                    let validUrl = false;
+                    try {
+                        const u = new URL(resume);
+                        if (['http:', 'https:'].includes(u.protocol)) validUrl = true;
+                    } catch {}
+                    if (!validUrl) {
+                        showError('Please enter a valid web URL for your resume (e.g. Google Drive, LinkedIn, or Portfolio link).');
+                        resumeInput?.focus();
+                        return;
+                    }
+
+                    if (!message || message.length < 5) {
+                        showError('Please explain why you want to join DraftOne (at least 5 characters).');
+                        msgInput?.focus();
+                        return;
+                    }
+
+                    // Set SUBMITTING state
+                    isSubmitting = true;
+                    if (notice) notice.style.display = 'none';
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'SUBMITTING APPLICATION...';
+                    }
+
+                    try {
+                        const response = await fetch('/api/application', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                jobId,
+                                name,
+                                email,
+                                phone,
+                                resume,
+                                message,
+                                _gotcha
+                            })
+                        });
+
+                        let data;
+                        try {
+                            data = await response.json();
+                        } catch {
+                            data = {};
+                        }
+
+                        if (!response.ok || !data.success) {
+                            throw new Error(data.error || 'Your application could not be submitted. Please try again.');
+                        }
+
+                        // SUCCESS STATE
+                        if (form) form.style.display = 'none';
+                        if (successView) successView.style.display = 'flex';
+                        if (notice) notice.style.display = 'none';
+
+                    } catch (err) {
+                        // ERROR STATE
+                        showError(err.message || 'SOMETHING WENT WRONG. Your application could not be submitted. Please try again or email admin@draftone.in.');
+                    } finally {
+                        isSubmitting = false;
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = 'SUBMIT APPLICATION &rarr;';
+                        }
+                    }
+                });
+            }
+
+            function showError(msg) {
+                if (!notice) return;
+                notice.style.display = 'block';
+                notice.style.background = '#ffe5e5';
+                notice.style.borderColor = '#e8180a';
+                notice.innerHTML = '<strong>' + escapeHtml(msg) + '</strong>';
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+        })();
+    </script>
 </body>
+
 </html>
