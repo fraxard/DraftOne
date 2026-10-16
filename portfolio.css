@@ -1,0 +1,1137 @@
+/* ==========================================================================
+   DRAFTONE PORTFOLIO — ISOLATED STYLESHEET
+   All rules strictly namespaced under .portfolio-page to prevent style leaks.
+   ========================================================================== */
+
+/* Page Base */
+html.portfolio-html {
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scroll-behavior: auto !important;
+}
+
+body.portfolio-page {
+  background-color: #ffffff !important;
+  color: #0d0d0d !important;
+  height: auto !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  line-height: 1.5;
+  overflow: visible !important;
+  max-width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   Portfolio Navigation Header
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border, #e2e2e6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.portfolio-page .portfolio-nav-container {
+  width: 100%;
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  padding: 0 var(--page-padding, clamp(1.25rem, 5vw, 4.5rem));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Brand & Wordmark */
+.portfolio-page .portfolio-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: #0d0d0d;
+  flex-shrink: 0;
+}
+
+.portfolio-page .portfolio-brand-wordmark {
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0d0d0d;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+}
+
+.portfolio-page .portfolio-brand-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555555;
+  border-left: 1px solid #d0d0d5;
+  padding-left: 0.6rem;
+}
+
+/* In-Page Navigation Links */
+.portfolio-page .portfolio-nav {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-page .portfolio-nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.2vw, 2.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-page .portfolio-nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #555555;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color var(--transition-fast, 0.2s ease);
+  position: relative;
+  padding: 0.35rem 0;
+}
+
+.portfolio-page .portfolio-nav-link:hover,
+.portfolio-page .portfolio-nav-link:focus-visible {
+  color: #0d0d0d;
+}
+
+.portfolio-page .portfolio-nav-link.active {
+  color: #0d0d0d;
+  font-weight: 700;
+}
+
+.portfolio-page .portfolio-nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0d0d0d;
+}
+
+/* Nav Actions (CTA + Menu Toggle) */
+.portfolio-page .portfolio-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.portfolio-page .portfolio-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  background-color: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+  transition: background-color var(--transition-fast, 0.2s ease), transform var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-cta-btn:hover,
+.portfolio-page .portfolio-cta-btn:focus-visible {
+  background-color: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+.portfolio-page .portfolio-cta-btn svg {
+  width: 11px;
+  height: 11px;
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-cta-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* Style harmonization for shared hamburger menu toggle */
+.portfolio-page .portfolio-header .menu-toggle {
+  position: relative;
+  margin: 0;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.portfolio-page .portfolio-header .menu-toggle .bar {
+  background: #0d0d0d;
+}
+
+body.menu-open.portfolio-page .menu-toggle .bar {
+  background: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Main Content Shell & Sections
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-main {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background-color: #ffffff;
+  overflow: visible;
+}
+
+.portfolio-page .portfolio-section {
+  scroll-margin-top: 96px;
+  box-sizing: border-box;
+}
+
+.portfolio-page .portfolio-container {
+  width: 100%;
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 5rem) var(--page-padding, clamp(1.25rem, 5vw, 4.5rem));
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Work Section Header
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-section-header {
+  max-width: 900px;
+  margin-bottom: clamp(2.2rem, 4.5vw, 4rem);
+}
+
+.portfolio-page .portfolio-heading {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1.85rem, 4.2vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: #0d0d0d;
+  margin: 0 0 clamp(1rem, 2vh, 1.6rem) 0;
+  text-transform: none;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.portfolio-page .portfolio-subtext {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #555555;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Work Project Grid & Cards
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-work-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  width: 100%;
+}
+
+/* Card sizing: Mirrored editorial cadence */
+.portfolio-page .portfolio-card--large {
+  grid-column: span 7;
+}
+
+.portfolio-page .portfolio-card--small {
+  grid-column: span 5;
+}
+
+.portfolio-page .portfolio-project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e2e6);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform var(--transition-fast, 0.2s ease), border-color var(--transition-fast, 0.2s ease), box-shadow var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-project-card:hover {
+  transform: translateY(-4px);
+  border-color: #0d0d0d;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Visual Container (Intentional, restrained editorial styling) */
+.portfolio-page .portfolio-card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: #f7f7f9;
+  border-bottom: 1px solid var(--color-border, #e2e2e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Distinct subtle tinted backgrounds for verified visual differentiation */
+.portfolio-page .portfolio-card-visual[data-project="luxignus"] {
+  background: radial-gradient(circle at 75% 25%, #f1f3f9 0%, #e9ebf2 100%);
+}
+
+.portfolio-page .portfolio-card-visual[data-project="gymsword"] {
+  background: radial-gradient(circle at 25% 75%, #f4f4f4 0%, #ebebeb 100%);
+}
+
+.portfolio-page .portfolio-card-visual[data-project="studio-site"] {
+  background: radial-gradient(circle at 50% 50%, #f6f8f7 0%, #e8ece9 100%);
+}
+
+.portfolio-page .portfolio-card-visual[data-project="creator-drop"] {
+  background: radial-gradient(circle at 80% 80%, #fbf5f2 0%, #eee4dd 100%);
+}
+
+.portfolio-page .portfolio-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555555;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.35rem 0.65rem;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.portfolio-page .portfolio-visual-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.portfolio-page .portfolio-monogram {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #0d0d0d;
+  opacity: 0.88;
+  line-height: 1;
+  user-select: none;
+}
+
+.portfolio-page .portfolio-visual-caption {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555555;
+}
+
+/* Card Info Container */
+.portfolio-page .portfolio-card-info {
+  padding: clamp(1.25rem, 2.2vw, 1.85rem);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.portfolio-page .portfolio-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.portfolio-page .portfolio-tag {
+  display: inline-block;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  background-color: #f3f3f5;
+  padding: 0.28rem 0.6rem;
+  border-radius: 2px;
+}
+
+.portfolio-page .portfolio-project-title {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #0d0d0d;
+  margin: 0 0 0.75rem 0;
+}
+
+.portfolio-page .portfolio-project-desc {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #555555;
+  margin: 0;
+}
+
+/* Focus visibility for accessibility */
+.portfolio-page a:focus-visible,
+.portfolio-page button:focus-visible {
+  outline: 2px solid #0d0d0d;
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Services Section
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-services {
+  border-top: 1px solid var(--color-border, #e2e2e6);
+  background-color: #ffffff;
+}
+
+.portfolio-page .portfolio-services-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  width: 100%;
+}
+
+/* All 5 cards share identical width and proportions for visual balance */
+.portfolio-page .portfolio-service-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e2e6);
+  border-radius: 4px;
+  padding: clamp(1.5rem, 2.5vw, 2.2rem);
+  box-sizing: border-box;
+  transition: transform var(--transition-fast, 0.2s ease), border-color var(--transition-fast, 0.2s ease), box-shadow var(--transition-fast, 0.2s ease);
+}
+
+/* Centered 2-card bottom row: cards 4 and 5 occupy the central 8 columns (cols 3-10) */
+.portfolio-page .portfolio-service-card:nth-child(4) {
+  grid-column: 3 / span 4;
+}
+
+.portfolio-page .portfolio-service-card:nth-child(5) {
+  grid-column: 7 / span 4;
+}
+
+.portfolio-page .portfolio-service-card:hover {
+  transform: translateY(-4px);
+  border-color: #0d0d0d;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-page .portfolio-service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-page .portfolio-service-index {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #555555;
+  text-transform: uppercase;
+}
+
+.portfolio-page .portfolio-service-badge {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555555;
+  background-color: #f2f2f5;
+  padding: 0.22rem 0.5rem;
+  border-radius: 2px;
+}
+
+.portfolio-page .portfolio-service-title {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #0d0d0d;
+  margin: 0.4rem 0 0.75rem 0;
+}
+
+.portfolio-page .portfolio-service-desc {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.62;
+  color: #555555;
+  margin: 0 0 1.4rem 0;
+  flex-grow: 1;
+}
+
+.portfolio-page .portfolio-service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid #f0f0f3;
+}
+
+.portfolio-page .portfolio-service-tag {
+  display: inline-block;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #2a2a2a;
+  background-color: #f7f7f9;
+  border: 1px solid #e7e7eb;
+  padding: 0.22rem 0.5rem;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Testimonials Section
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-testimonials {
+  border-top: 1px solid var(--color-border, #e2e2e6);
+  background-color: #fafafc;
+}
+
+.portfolio-page .portfolio-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  width: 100%;
+}
+
+.portfolio-page .portfolio-testimonial-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e2e6);
+  border-radius: 4px;
+  padding: clamp(1.6rem, 2.5vw, 2.2rem);
+  box-sizing: border-box;
+  transition: transform var(--transition-fast, 0.2s ease), border-color var(--transition-fast, 0.2s ease), box-shadow var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: #0d0d0d;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-page .portfolio-testimonial-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-page .portfolio-testimonial-badge {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555555;
+  background-color: #f2f2f5;
+  padding: 0.25rem 0.55rem;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+.portfolio-page .portfolio-testimonial-scope {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0d0d0d;
+  letter-spacing: 0.01em;
+}
+
+.portfolio-page .portfolio-testimonial-quote {
+  margin: 0 0 1.75rem 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.portfolio-page .portfolio-testimonial-quote p {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #333333;
+  font-style: italic;
+  margin: 0;
+}
+
+.portfolio-page .portfolio-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f0f0f3;
+}
+
+.portfolio-page .portfolio-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #111111;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.portfolio-page .portfolio-testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.portfolio-page .portfolio-testimonial-name {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0d0d0d;
+  font-style: normal;
+}
+
+.portfolio-page .portfolio-testimonial-role {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #555555;
+}
+
+.portfolio-page .portfolio-testimonial-note {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: 1.1rem 1.4rem;
+  background-color: #ffffff;
+  border: 1px dashed var(--color-border, #d0d0d5);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.portfolio-page .portfolio-note-icon {
+  font-size: 1.1rem;
+  color: #555555;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.portfolio-page .portfolio-note-text {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #555555;
+  margin: 0;
+}
+
+.portfolio-page .portfolio-note-text strong {
+  color: #0d0d0d;
+}
+
+/* --------------------------------------------------------------------------
+   About DraftOne Section
+   -------------------------------------------------------------------------- */
+.portfolio-page .portfolio-about {
+  border-top: 1px solid var(--color-border, #e2e2e6);
+  background-color: #ffffff;
+}
+
+/* Strategic Pillars (Strategy, Design, Technology) */
+.portfolio-page .portfolio-about-pillars {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  width: 100%;
+}
+
+.portfolio-page .portfolio-about-pillar {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e2e6);
+  border-radius: 4px;
+  padding: clamp(1.6rem, 2.5vw, 2.2rem);
+  box-sizing: border-box;
+  transition: transform var(--transition-fast, 0.2s ease), border-color var(--transition-fast, 0.2s ease), box-shadow var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-about-pillar:hover {
+  transform: translateY(-4px);
+  border-color: #0d0d0d;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-page .portfolio-pillar-num {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #555555;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-page .portfolio-pillar-title {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+  color: #0d0d0d;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.3;
+}
+
+.portfolio-page .portfolio-pillar-desc {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.92rem;
+  color: #444444;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+  flex-grow: 1;
+}
+
+.portfolio-page .portfolio-pillar-list {
+  list-style: none;
+  padding: 1rem 0 0 0;
+  margin: 0;
+  border-top: 1px solid #f0f0f3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.portfolio-page .portfolio-pillar-list li {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.8rem;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.portfolio-page .portfolio-pillar-list li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background-color: #0d0d0d;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Process Section (Understand -> Define -> Create -> Deliver) */
+.portfolio-page .portfolio-about-process-wrapper {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  background-color: #fafafc;
+  border: 1px solid var(--color-border, #e2e2e6);
+  border-radius: 6px;
+  padding: clamp(1.8rem, 3.5vw, 3rem);
+  box-sizing: border-box;
+}
+
+.portfolio-page .portfolio-about-process-header {
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.portfolio-page .portfolio-process-heading {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  font-weight: 700;
+  color: #0d0d0d;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.25;
+}
+
+.portfolio-page .portfolio-about-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  width: 100%;
+}
+
+.portfolio-page .portfolio-process-step {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e2e6);
+  border-radius: 4px;
+  padding: clamp(1.25rem, 1.8vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform var(--transition-fast, 0.2s ease), border-color var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-process-step:hover {
+  border-color: #0d0d0d;
+  transform: translateY(-2px);
+}
+
+.portfolio-page .portfolio-process-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-page .portfolio-process-step-idx {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #555555;
+  text-transform: uppercase;
+}
+
+.portfolio-page .portfolio-process-step-tag {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  background-color: #f0f0f4;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+}
+
+.portfolio-page .portfolio-process-step-name {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0d0d0d;
+  margin: 0 0 0.5rem 0;
+}
+
+.portfolio-page .portfolio-process-step-desc {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.84rem;
+  color: #444444;
+  line-height: 1.55;
+  margin: 0 0 1.15rem 0;
+  flex-grow: 1;
+}
+
+.portfolio-page .portfolio-process-milestone {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #555555;
+  border-top: 1px solid #f0f0f3;
+  padding-top: 0.65rem;
+  letter-spacing: 0.02em;
+}
+
+/* Prominent Studio CTA */
+.portfolio-page .portfolio-about-cta-card {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  background-color: #0d0d0d;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: clamp(2.25rem, 4.5vw, 4rem) clamp(1.5rem, 4vw, 3.25rem);
+  box-sizing: border-box;
+}
+
+.portfolio-page .portfolio-about-cta-kicker {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #999999;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-page .portfolio-about-cta-title {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 0.85rem 0;
+  max-width: 800px;
+}
+
+.portfolio-page .portfolio-about-cta-desc {
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  color: #b0b0b8;
+  line-height: 1.6;
+  margin: 0 0 1.85rem 0;
+  max-width: 660px;
+}
+
+.portfolio-page .portfolio-about-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.portfolio-page .portfolio-about-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  background-color: #ffffff;
+  color: #0d0d0d;
+  text-decoration: none;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: background-color var(--transition-fast, 0.2s ease), transform var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-about-cta-primary:hover,
+.portfolio-page .portfolio-about-cta-primary:focus-visible {
+  background-color: #e5e5ea;
+  transform: translateY(-1px);
+}
+
+.portfolio-page .portfolio-about-cta-primary svg {
+  width: 11px;
+  height: 11px;
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-about-cta-primary:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.portfolio-page .portfolio-about-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #dddddd;
+  text-decoration: none;
+  font-family: var(--font-primary, "Lexend", sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.portfolio-page .portfolio-about-cta-secondary:hover,
+.portfolio-page .portfolio-about-cta-secondary:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Site Footer Integration
+   -------------------------------------------------------------------------- */
+.portfolio-page #site-footer {
+  border-top: 1px solid var(--color-border, #e2e2e6);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .portfolio-page .portfolio-card--large,
+  .portfolio-page .portfolio-card--small {
+    grid-column: span 6;
+  }
+
+  .portfolio-page .portfolio-service-card:nth-child(1),
+  .portfolio-page .portfolio-service-card:nth-child(2),
+  .portfolio-page .portfolio-service-card:nth-child(3),
+  .portfolio-page .portfolio-service-card:nth-child(4) {
+    grid-column: span 6;
+  }
+
+  /* Card 5 centered on tablet with identical span 6 width */
+  .portfolio-page .portfolio-service-card:nth-child(5) {
+    grid-column: 4 / span 6;
+  }
+
+  .portfolio-page .portfolio-testimonial-card:nth-child(1),
+  .portfolio-page .portfolio-testimonial-card:nth-child(2) {
+    grid-column: span 6;
+  }
+
+  /* Card 3 centered on tablet row 2 */
+  .portfolio-page .portfolio-testimonial-card:nth-child(3) {
+    grid-column: 4 / span 6;
+  }
+
+  .portfolio-page .portfolio-about-pillar:nth-child(1),
+  .portfolio-page .portfolio-about-pillar:nth-child(2) {
+    grid-column: span 6;
+  }
+
+  /* Pillar 3 centered on row 2 */
+  .portfolio-page .portfolio-about-pillar:nth-child(3) {
+    grid-column: 4 / span 6;
+  }
+
+  .portfolio-page .portfolio-about-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-page .portfolio-header {
+    height: 70px;
+  }
+
+  .portfolio-page .portfolio-nav {
+    display: none; /* In-page links accessible in full menu on mobile */
+  }
+
+  .portfolio-page .portfolio-cta-btn {
+    display: none;
+  }
+
+  .portfolio-page .portfolio-work-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .portfolio-page .portfolio-card--large,
+  .portfolio-page .portfolio-card--small {
+    grid-column: span 1;
+  }
+
+  .portfolio-page .portfolio-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .portfolio-page .portfolio-service-card:nth-child(n) {
+    grid-column: span 1;
+  }
+
+  .portfolio-page .portfolio-service-card {
+    padding: 1.35rem;
+  }
+
+  .portfolio-page .portfolio-testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .portfolio-page .portfolio-testimonial-card:nth-child(n) {
+    grid-column: span 1;
+  }
+
+  .portfolio-page .portfolio-testimonial-card {
+    padding: 1.35rem;
+  }
+
+  .portfolio-page .portfolio-about-pillars {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .portfolio-page .portfolio-about-pillar:nth-child(n) {
+    grid-column: span 1;
+    padding: 1.35rem;
+  }
+
+  .portfolio-page .portfolio-about-process-wrapper {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .portfolio-page .portfolio-about-process-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .portfolio-page .portfolio-process-step {
+    padding: 1.25rem;
+  }
+
+  .portfolio-page .portfolio-about-cta-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .portfolio-page .portfolio-about-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .portfolio-page .portfolio-about-cta-primary {
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .portfolio-page .portfolio-about-cta-secondary {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page .portfolio-brand-badge {
+    display: none;
+  }
+
+  .portfolio-page .portfolio-nav-container {
+    padding: 0 1.25rem;
+  }
+
+  .portfolio-page .portfolio-container {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .portfolio-page .portfolio-heading {
+    font-size: clamp(1.65rem, 7.5vw, 2.1rem);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-page *,
+  .portfolio-page *::before,
+  .portfolio-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

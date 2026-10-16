@@ -4,111 +4,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | DraftOne</title>
+    <title>Work & Portfolio | DraftOne</title>
+    <meta name="description" content="Explore selected work, brand identities, and conversion-first digital systems crafted by DraftOne Media Productions.">
     <link rel="icon" type="image/png" href="draftone logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="portfolio.css">
 </head>
 
 <body id="top" class="portfolio-page">
-    <!-- Navigation Bar: minimal header with top-right menu toggle -->
-    <div id="navbar" class="navbar-light">
-        <div class="nav-logo"></div>
-        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fullscreen-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-    </div>
+    <!-- Portfolio Navigation Header -->
+    <header class="portfolio-header">
+        <div class="portfolio-nav-container">
+            <a href="index.html" class="portfolio-brand" aria-label="DraftOne Home">
+                <span class="portfolio-brand-wordmark">DraftOne</span>
+                <span class="portfolio-brand-badge">Portfolio</span>
+            </a>
 
-    <!-- Main Content: Centered Coming Soon Presentation -->
-    <main class="portfolio-coming-soon">
-        <div class="portfolio-cs-container">
-            <!-- TV Component -->
-            <div class="tv-illustration-wrapper">
-                <div class="main_wrapper">
-                    <div class="main">
-                        <div class="antenna">
-                            <div class="antenna_shadow"></div>
-                            <div class="a1"></div>
-                            <div class="a1d"></div>
-                            <div class="a2"></div>
-                            <div class="a2d"></div>
-                            <div class="a_base"></div>
-                        </div>
-                        <div class="tv">
-                            <div class="cruve">
-                                <svg
-                                    class="curve_svg"
-                                    version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    viewBox="0 0 189.929 189.929"
-                                    xml:space="preserve"
-                                >
-                                    <path
-                                        d="M70.343,70.343c-30.554,30.553-44.806,72.7-39.102,115.635l-29.738,3.951C-5.442,137.659,11.917,86.34,49.129,49.13
-                                        C86.34,11.918,137.664-5.445,189.928,1.502l-3.95,29.738C143.041,25.54,100.895,39.789,70.343,70.343z"
-                                    ></path>
-                                </svg>
-                            </div>
-                            <div class="display_div">
-                                <div class="screen_out">
-                                    <div class="screen_out1">
-                                        <div class="screen">
-                                            <span class="notfound_text">COMING SOON</span>
-                                        </div>
-                                        <div class="screenM">
-                                            <span class="notfound_text">COMING SOON</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lines">
-                                <div class="line1"></div>
-                                <div class="line2"></div>
-                                <div class="line3"></div>
-                            </div>
-                            <div class="buttons_div">
-                                <div class="b1"><div></div></div>
-                                <div class="b2"></div>
-                                <div class="speakers">
-                                    <div class="g1">
-                                        <div class="g11"></div>
-                                        <div class="g12"></div>
-                                        <div class="g13"></div>
-                                    </div>
-                                    <div class="g"></div>
-                                    <div class="g"></div>
-                                </div>
+            <!-- In-page section navigation -->
+            <nav class="portfolio-nav" aria-label="Portfolio sections">
+                <ul class="portfolio-nav-list">
+                    <li><a href="#work" class="portfolio-nav-link active">Work</a></li>
+                    <li><a href="#services" class="portfolio-nav-link">Services</a></li>
+                    <li><a href="#testimonials" class="portfolio-nav-link">Testimonials</a></li>
+                    <li><a href="#about" class="portfolio-nav-link">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="portfolio-nav-actions">
+                <a href="schedule.html" class="portfolio-cta-btn">
+                    <span>Let's Talk</span>
+                    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.2M9.5 2.5V7.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+                    </svg>
+                </a>
+
+                <!-- Shared Hamburger Menu Toggle -->
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fullscreen-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="portfolio-main">
+        <!-- 1. WORK SECTION -->
+        <section id="work" class="portfolio-section portfolio-work" aria-labelledby="work-heading">
+            <div class="portfolio-container">
+                <!-- Section Header -->
+                <div class="portfolio-section-header">
+                    <div class="section-label">
+                        <span class="label-dot"></span>
+                        <span class="label-text">SELECTED WORK</span>
+                    </div>
+                    <h1 id="work-heading" class="portfolio-heading">
+                        Crafted With Precision.<br>Executed in First-Draft.
+                    </h1>
+                    <p class="portfolio-subtext">
+                        A curated selection of brand identities, high-conversion digital experiences, and visual systems designed to move businesses forward.
+                    </p>
+                </div>
+
+                <!-- Projects Showcase Grid -->
+                <div class="portfolio-work-grid">
+                    <!-- Project 1: Luxignus Launch Kit -->
+                    <article class="portfolio-project-card portfolio-card--large">
+                        <div class="portfolio-card-visual" data-project="luxignus">
+                            <div class="portfolio-card-badge">PROJECT 01</div>
+                            <div class="portfolio-visual-content">
+                                <div class="portfolio-monogram">LX</div>
+                                <span class="portfolio-visual-caption">Launch Kit & Visual System</span>
                             </div>
                         </div>
-                        <div class="bottom">
-                            <div class="base1"></div>
-                            <div class="base2"></div>
-                            <div class="base3"></div>
+                        <div class="portfolio-card-info">
+                            <div class="portfolio-card-tags">
+                                <span class="portfolio-tag">Branding</span>
+                                <span class="portfolio-tag">Web Design</span>
+                            </div>
+                            <h2 class="portfolio-project-title">Luxignus Launch Kit</h2>
+                            <p class="portfolio-project-desc">
+                                A bold visual identity and landing page for a premium LED brand, designed to feel sharp, modern, and conversion-ready from day one.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: GymSword Billboard Experience -->
+                    <article class="portfolio-project-card portfolio-card--small">
+                        <div class="portfolio-card-visual" data-project="gymsword">
+                            <div class="portfolio-card-badge">PROJECT 02</div>
+                            <div class="portfolio-visual-content">
+                                <div class="portfolio-monogram">GS</div>
+                                <span class="portfolio-visual-caption">High-Impact Outdoor Visuals</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-info">
+                            <div class="portfolio-card-tags">
+                                <span class="portfolio-tag">Visual Identity</span>
+                                <span class="portfolio-tag">Campaign</span>
+                            </div>
+                            <h2 class="portfolio-project-title">GymSword Billboard Experience</h2>
+                            <p class="portfolio-project-desc">
+                                Large-format outdoor visuals built to dominate attention and keep the brand loud, clear, and impossible to ignore.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Conversion-First Studio Site -->
+                    <article class="portfolio-project-card portfolio-card--small">
+                        <div class="portfolio-card-visual" data-project="studio-site">
+                            <div class="portfolio-card-badge">PROJECT 03</div>
+                            <div class="portfolio-visual-content">
+                                <div class="portfolio-monogram">CF</div>
+                                <span class="portfolio-visual-caption">High-Clarity Conversion Engine</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-info">
+                            <div class="portfolio-card-tags">
+                                <span class="portfolio-tag">Web Design</span>
+                                <span class="portfolio-tag">UX Strategy</span>
+                            </div>
+                            <h2 class="portfolio-project-title">Conversion-First Studio Site</h2>
+                            <p class="portfolio-project-desc">
+                                A high-clarity website for a creative studio focused on showing work fast and channeling visitors into real inquiries.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Creator Drop System -->
+                    <article class="portfolio-project-card portfolio-card--large">
+                        <div class="portfolio-card-visual" data-project="creator-drop">
+                            <div class="portfolio-card-badge">PROJECT 04</div>
+                            <div class="portfolio-visual-content">
+                                <div class="portfolio-monogram">CD</div>
+                                <span class="portfolio-visual-caption">Modular Release Framework</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-info">
+                            <div class="portfolio-card-tags">
+                                <span class="portfolio-tag">Content Branding</span>
+                                <span class="portfolio-tag">Social Design</span>
+                            </div>
+                            <h2 class="portfolio-project-title">Creator Drop System</h2>
+                            <p class="portfolio-project-desc">
+                                A modular visual system for creators that keeps every post, thumbnail, and drop on-brand without feeling repetitive.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SERVICES SECTION -->
+        <section id="services" class="portfolio-section portfolio-services" aria-labelledby="services-heading">
+            <div class="portfolio-container">
+                <!-- Section Header -->
+                <div class="portfolio-section-header">
+                    <div class="section-label">
+                        <span class="label-dot"></span>
+                        <span class="label-text">SERVICES &amp; CAPABILITIES</span>
+                    </div>
+                    <h2 id="services-heading" class="portfolio-heading">
+                        Focused Creative Services.<br>Built to Drive Business Growth.
+                    </h2>
+                    <p class="portfolio-subtext">
+                        From foundational visual identities to conversion-focused web development, video editing, and campaign creative suites—tailored for founders, creators, and modern teams.
+                    </p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="portfolio-services-grid">
+                    <!-- Service 01: Brand Identity & Graphic Design -->
+                    <article class="portfolio-service-card">
+                        <div class="portfolio-service-header">
+                            <span class="portfolio-service-index">[ 01 ]</span>
+                            <span class="portfolio-service-badge">BRANDING</span>
+                        </div>
+                        <h3 class="portfolio-service-title">Brand Identity &amp; Graphic Design</h3>
+                        <p class="portfolio-service-desc">
+                            We deliver distinctive logo systems, typography palettes, brand guidelines, and visual collateral for emerging ventures and established teams. This establishes immediate market credibility and ensures your brand stays consistent across every touchpoint.
+                        </p>
+                        <div class="portfolio-service-tags">
+                            <span class="portfolio-service-tag">Logo Systems</span>
+                            <span class="portfolio-service-tag">Visual Identity</span>
+                            <span class="portfolio-service-tag">Brand Guidelines</span>
+                            <span class="portfolio-service-tag">Marketing Collateral</span>
+                        </div>
+                    </article>
+
+                    <!-- Service 02: Website & Application Development -->
+                    <article class="portfolio-service-card">
+                        <div class="portfolio-service-header">
+                            <span class="portfolio-service-index">[ 02 ]</span>
+                            <span class="portfolio-service-badge">DEVELOPMENT</span>
+                        </div>
+                        <h3 class="portfolio-service-title">Website &amp; Application Development</h3>
+                        <p class="portfolio-service-desc">
+                            We design and build clean, responsive websites and web interfaces for businesses seeking a high-converting digital home. Fast-loading, mobile-first code ensures your work is presented cleanly and visitor traffic channels into qualified inquiries.
+                        </p>
+                        <div class="portfolio-service-tags">
+                            <span class="portfolio-service-tag">Responsive Websites</span>
+                            <span class="portfolio-service-tag">Landing Pages</span>
+                            <span class="portfolio-service-tag">Custom Interfaces</span>
+                            <span class="portfolio-service-tag">Mobile Optimization</span>
+                        </div>
+                    </article>
+
+                    <!-- Service 03: Video Editing & Motion Content -->
+                    <article class="portfolio-service-card">
+                        <div class="portfolio-service-header">
+                            <span class="portfolio-service-index">[ 03 ]</span>
+                            <span class="portfolio-service-badge">VIDEO &amp; MOTION</span>
+                        </div>
+                        <h3 class="portfolio-service-title">Video Editing &amp; Motion Content</h3>
+                        <p class="portfolio-service-desc">
+                            We produce high-retention short-form reels, motion graphics, and YouTube post-production edits for creators and businesses. Professional pacing, sound design, and visual polish help your message command attention across competitive social feeds.
+                        </p>
+                        <div class="portfolio-service-tags">
+                            <span class="portfolio-service-tag">Short-Form Reels</span>
+                            <span class="portfolio-service-tag">Motion Graphics</span>
+                            <span class="portfolio-service-tag">Promotional Edits</span>
+                            <span class="portfolio-service-tag">YouTube Post-Production</span>
+                        </div>
+                    </article>
+
+                    <!-- Service 04: Social Media & Ad Creatives -->
+                    <article class="portfolio-service-card">
+                        <div class="portfolio-service-header">
+                            <span class="portfolio-service-index">[ 04 ]</span>
+                            <span class="portfolio-service-badge">AD CREATIVES</span>
+                        </div>
+                        <h3 class="portfolio-service-title">Social Media &amp; Ad Creatives</h3>
+                        <p class="portfolio-service-desc">
+                            We craft static and animated ad creative suites, carousel templates, and modular social graphics for marketing teams and business owners. Eye-catching layouts and clear value propositions stop the scroll and lower paid acquisition costs.
+                        </p>
+                        <div class="portfolio-service-tags">
+                            <span class="portfolio-service-tag">Paid Social Ads</span>
+                            <span class="portfolio-service-tag">Static &amp; Motion Units</span>
+                            <span class="portfolio-service-tag">Social Templates</span>
+                            <span class="portfolio-service-tag">Campaign Assets</span>
+                        </div>
+                    </article>
+
+                    <!-- Service 05: Digital Marketing & Campaigns -->
+                    <article class="portfolio-service-card">
+                        <div class="portfolio-service-header">
+                            <span class="portfolio-service-index">[ 05 ]</span>
+                            <span class="portfolio-service-badge">CAMPAIGNS</span>
+                        </div>
+                        <h3 class="portfolio-service-title">Digital Marketing &amp; Campaigns</h3>
+                        <p class="portfolio-service-desc">
+                            We package coordinated creative suites and promotional visuals for companies launching new products, events, or brand milestones. Synchronized visuals across channels give your key marketing announcements unified momentum.
+                        </p>
+                        <div class="portfolio-service-tags">
+                            <span class="portfolio-service-tag">Launch Creative Kits</span>
+                            <span class="portfolio-service-tag">Promotional Rollouts</span>
+                            <span class="portfolio-service-tag">Announcement Graphics</span>
+                            <span class="portfolio-service-tag">Campaign Visuals</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TESTIMONIALS SECTION -->
+        <section id="testimonials" class="portfolio-section portfolio-testimonials" aria-labelledby="testimonials-heading">
+            <div class="portfolio-container">
+                <!-- Section Header -->
+                <div class="portfolio-section-header">
+                    <div class="section-label">
+                        <span class="label-dot"></span>
+                        <span class="label-text">TESTIMONIALS &amp; TRUST</span>
+                    </div>
+                    <h2 id="testimonials-heading" class="portfolio-heading">
+                        Client Endorsements &amp;<br>Collaboration Impact.
+                    </h2>
+                    <p class="portfolio-subtext">
+                        Direct feedback from brand founders, marketing leaders, and content creators who have partnered with DraftOne on brand identities, high-conversion web platforms, and motion production.
+                    </p>
+                </div>
+
+                <!-- Testimonials Grid -->
+                <div class="portfolio-testimonials-grid">
+                    <!-- Testimonial 01 -->
+                    <article class="portfolio-testimonial-card">
+                        <div class="portfolio-testimonial-top">
+                            <span class="portfolio-testimonial-badge">[ CLIENT FEEDBACK — PENDING RELEASE ]</span>
+                            <span class="portfolio-testimonial-scope">Brand Identity &amp; System</span>
+                        </div>
+                        <blockquote class="portfolio-testimonial-quote">
+                            <p>
+                                “Client partnership statement regarding brand identity development, typography systems, and visual guidelines will be published here upon client release.”
+                            </p>
+                        </blockquote>
+                        <div class="portfolio-testimonial-author">
+                            <div class="portfolio-testimonial-avatar" aria-hidden="true">
+                                <span>FD</span>
+                            </div>
+                            <div class="portfolio-testimonial-meta">
+                                <cite class="portfolio-testimonial-name">[ Founder &amp; Creative Director ]</cite>
+                                <span class="portfolio-testimonial-role">Consumer Brand &amp; Retail</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 02 -->
+                    <article class="portfolio-testimonial-card">
+                        <div class="portfolio-testimonial-top">
+                            <span class="portfolio-testimonial-badge">[ CLIENT FEEDBACK — PENDING RELEASE ]</span>
+                            <span class="portfolio-testimonial-scope">Web Architecture &amp; UI</span>
+                        </div>
+                        <blockquote class="portfolio-testimonial-quote">
+                            <p>
+                                “Verified client endorsement detailing web performance improvements, user journey optimization, and conversion impact will be displayed here upon review.”
+                            </p>
+                        </blockquote>
+                        <div class="portfolio-testimonial-author">
+                            <div class="portfolio-testimonial-avatar" aria-hidden="true">
+                                <span>VP</span>
+                            </div>
+                            <div class="portfolio-testimonial-meta">
+                                <cite class="portfolio-testimonial-name">[ VP of Growth &amp; Marketing ]</cite>
+                                <span class="portfolio-testimonial-role">Digital E-Commerce Platform</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 03 -->
+                    <article class="portfolio-testimonial-card">
+                        <div class="portfolio-testimonial-top">
+                            <span class="portfolio-testimonial-badge">[ CLIENT FEEDBACK — PENDING RELEASE ]</span>
+                            <span class="portfolio-testimonial-scope">Video &amp; Motion Production</span>
+                        </div>
+                        <blockquote class="portfolio-testimonial-quote">
+                            <p>
+                                “Creator collaboration review highlighting short-form video retention, pacing polish, and editorial turnaround speed will be placed here following sign-off.”
+                            </p>
+                        </blockquote>
+                        <div class="portfolio-testimonial-author">
+                            <div class="portfolio-testimonial-avatar" aria-hidden="true">
+                                <span>CR</span>
+                            </div>
+                            <div class="portfolio-testimonial-meta">
+                                <cite class="portfolio-testimonial-name">[ Content Operations Lead ]</cite>
+                                <span class="portfolio-testimonial-role">Media &amp; Creator Network</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Callout Notice for Content Transparency -->
+                <div class="portfolio-testimonial-note">
+                    <span class="portfolio-note-icon" aria-hidden="true">ℹ</span>
+                    <p class="portfolio-note-text">
+                        <strong>Content Note:</strong> Testimonial slots above represent verified engagement scopes across our core service verticals. Specific partner quotes and company trademarks are undergoing formal sign-off before public release.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ABOUT DRAFTONE SECTION -->
+        <section id="about" class="portfolio-section portfolio-about" aria-labelledby="about-heading">
+            <div class="portfolio-container">
+                <!-- Section Header -->
+                <div class="portfolio-section-header">
+                    <div class="section-label">
+                        <span class="label-dot"></span>
+                        <span class="label-text">ABOUT DRAFTONE</span>
+                    </div>
+                    <h2 id="about-heading" class="portfolio-heading">
+                        Technology-Driven Execution.<br>Creative-Studio Polish.
+                    </h2>
+                    <p class="portfolio-subtext">
+                        DraftOne operates at the intersection of business strategy, visual craft, and modern web engineering. We build conversion-ready digital systems for ambitious founders, creators, and modern teams.
+                    </p>
+                </div>
+
+                <!-- Strategic Pillars (Strategy, Design, Technology) -->
+                <div class="portfolio-about-pillars">
+                    <article class="portfolio-about-pillar">
+                        <div class="portfolio-pillar-num">[ 01 ]</div>
+                        <h3 class="portfolio-pillar-title">Strategy &amp; Architecture</h3>
+                        <p class="portfolio-pillar-desc">
+                            We ground every project in clear business objectives, audience intent, and lean digital structure before writing code or generating visual assets.
+                        </p>
+                        <ul class="portfolio-pillar-list">
+                            <li>Business Objective Alignment</li>
+                            <li>Audience Intent Analysis</li>
+                            <li>Conversion Funnel Mapping</li>
+                        </ul>
+                    </article>
+
+                    <article class="portfolio-about-pillar">
+                        <div class="portfolio-pillar-num">[ 02 ]</div>
+                        <h3 class="portfolio-pillar-title">Creative Design Studio</h3>
+                        <p class="portfolio-pillar-desc">
+                            We craft distinctive logo systems, typography palettes, modular social graphics, and high-retention motion media that build instant market credibility.
+                        </p>
+                        <ul class="portfolio-pillar-list">
+                            <li>Identity &amp; Design Systems</li>
+                            <li>Typography &amp; Layout Craft</li>
+                            <li>High-Retention Motion Content</li>
+                        </ul>
+                    </article>
+
+                    <article class="portfolio-about-pillar">
+                        <div class="portfolio-pillar-num">[ 03 ]</div>
+                        <h3 class="portfolio-pillar-title">Modern Web Engineering</h3>
+                        <p class="portfolio-pillar-desc">
+                            We develop clean, lightweight, accessible websites and custom interfaces optimized for performance, search visibility, and mobile-first responsiveness.
+                        </p>
+                        <ul class="portfolio-pillar-list">
+                            <li>Fast, Semantic Web Standards</li>
+                            <li>Mobile-First Responsive Code</li>
+                            <li>WCAG Accessibility Compliance</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <!-- Process Section (Understand -> Define -> Create -> Deliver) -->
+                <div class="portfolio-about-process-wrapper">
+                    <div class="portfolio-about-process-header">
+                        <div class="section-label">
+                            <span class="label-dot"></span>
+                            <span class="label-text">THE DRAFTONE METHODOLOGY</span>
+                        </div>
+                        <h3 class="portfolio-process-heading">A Clear, Credible Path from Discovery to Delivery.</h3>
+                    </div>
+
+                    <div class="portfolio-about-process-grid">
+                        <!-- Step 1: Understand -->
+                        <div class="portfolio-process-step">
+                            <div class="portfolio-process-step-header">
+                                <span class="portfolio-process-step-idx">PHASE 01</span>
+                                <span class="portfolio-process-step-tag">DISCOVERY</span>
+                            </div>
+                            <h4 class="portfolio-process-step-name">Understand</h4>
+                            <p class="portfolio-process-step-desc">
+                                We audit your market positioning, existing funnel, and project objectives to establish what measurable success looks like.
+                            </p>
+                            <span class="portfolio-process-milestone">Deliverable: Project Brief &amp; Scope</span>
+                        </div>
+
+                        <!-- Step 2: Define -->
+                        <div class="portfolio-process-step">
+                            <div class="portfolio-process-step-header">
+                                <span class="portfolio-process-step-idx">PHASE 02</span>
+                                <span class="portfolio-process-step-tag">ARCHITECTURE</span>
+                            </div>
+                            <h4 class="portfolio-process-step-name">Define</h4>
+                            <p class="portfolio-process-step-desc">
+                                We specify user journeys, technical constraints, design direction, and deliverable milestones with unambiguous acceptance criteria.
+                            </p>
+                            <span class="portfolio-process-milestone">Deliverable: Structure &amp; Specifications</span>
+                        </div>
+
+                        <!-- Step 3: Create -->
+                        <div class="portfolio-process-step">
+                            <div class="portfolio-process-step-header">
+                                <span class="portfolio-process-step-idx">PHASE 03</span>
+                                <span class="portfolio-process-step-tag">PRODUCTION</span>
+                            </div>
+                            <h4 class="portfolio-process-step-name">Create</h4>
+                            <p class="portfolio-process-step-desc">
+                                We produce the work in iterative sprints—coding clean interfaces, refining visual systems, and polishing motion assets with continuous alignment.
+                            </p>
+                            <span class="portfolio-process-milestone">Deliverable: First-Draft Assets &amp; Code</span>
+                        </div>
+
+                        <!-- Step 4: Deliver -->
+                        <div class="portfolio-process-step">
+                            <div class="portfolio-process-step-header">
+                                <span class="portfolio-process-step-idx">PHASE 04</span>
+                                <span class="portfolio-process-step-tag">HANDOFF</span>
+                            </div>
+                            <h4 class="portfolio-process-step-name">Deliver</h4>
+                            <p class="portfolio-process-step-desc">
+                                Cross-device QA, accessibility validation, and smooth deployment handoff ensuring all assets launch with zero technical friction.
+                            </p>
+                            <span class="portfolio-process-milestone">Deliverable: Verified Launch &amp; Assets</span>
                         </div>
                     </div>
-                    <div class="text_404">
-                        <div class="text_4041">4</div>
-                        <div class="text_4042">0</div>
-                        <div class="text_4043">4</div>
+                </div>
+
+                <!-- Prominent Studio CTA -->
+                <div class="portfolio-about-cta-card">
+                    <div class="portfolio-about-cta-content">
+                        <span class="portfolio-about-cta-kicker">START A COLLABORATION</span>
+                        <h3 class="portfolio-about-cta-title">Ready to Build Your Next High-Impact System?</h3>
+                        <p class="portfolio-about-cta-desc">
+                            Whether you need an authoritative brand identity, a conversion-focused web presence, or high-retention video production—we turn complex requirements into clean first drafts.
+                        </p>
+                        <div class="portfolio-about-cta-actions">
+                            <a href="schedule.html" class="portfolio-about-cta-primary">
+                                <span>Schedule a Discovery Call</span>
+                                <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.2M9.5 2.5V7.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+                                </svg>
+                            </a>
+                            <a href="contact.html" class="portfolio-about-cta-secondary">
+                                <span>Send Project Inquiry Directly</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Supporting Content -->
-            <div class="portfolio-cs-content">
-                <h1 class="portfolio-cs-title">COMING SOON</h1>
-                <p class="portfolio-cs-desc">Our portfolio is currently being prepared. Check back soon.</p>
-                <a href="/" class="editorial-home-btn">GET BACK TO HOME</a>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Full-screen overlay menu -->
+    <!-- Main Website Footer (Reused from index.html) -->
+    <footer id="site-footer" class="site-footer">
+        <div class="footer-container">
+
+            <!-- TOP: Three Columns + Back to Top -->
+            <div class="footer-upper">
+                <div class="footer-columns">
+                    <!-- Column 1: Product -->
+                    <div class="footer-col">
+                        <h3 class="footer-col-title">Product</h3>
+                        <ul class="footer-links">
+                            <li><a href="#work">All Projects</a></li>
+                            <li><a href="index.html#process">How it Works</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="schedule.html">Submit a Request</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Company -->
+                    <div class="footer-col">
+                        <h3 class="footer-col-title">Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="#about">About DraftOne</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Contact -->
+                    <div class="footer-col footer-col--contact">
+                        <h3 class="footer-col-title">Contact</h3>
+                        <div class="footer-contact-info">
+                            <a href="mailto:admin@draftone.in" class="footer-email">admin@draftone.in</a>
+                            <p class="footer-location">Noida, UP</p>
+                        </div>
+                        <div class="footer-socials" aria-label="Social links">
+                            <a href="#" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+                                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64c-.95 0-1.72.78-1.72 1.73s.77 1.73 1.72 1.73 1.73-.78 1.73-1.73-.78-1.73-1.73Z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/draftone.in" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="footer-social-link" aria-label="X" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right-side Back to Top Control -->
+                <div class="footer-back-to-top">
+                    <a href="#top" id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+                        <svg viewBox="0 0 24 42" fill="none" xmlns="http://www.w3.org/2000/svg" class="back-to-top-arrow" aria-hidden="true">
+                            <path d="M12 40V4M12 4L3 13M12 4L21 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SUBTLE DIVIDER -->
+            <div class="footer-divider" role="separator"></div>
+
+            <!-- LARGE DRAFTONE WORDMARK -->
+            <div class="footer-wordmark-wrap">
+                <span class="footer-wordmark">DRAFTONE</span>
+            </div>
+
+            <!-- SUBTLE DIVIDER -->
+            <div class="footer-divider" role="separator"></div>
+
+            <!-- BOTTOM: Copyright -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© DraftOne Media Productions. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Full-screen overlay menu (Site-wide shared navigation) -->
     <nav class="fullscreen-menu" id="fullscreen-menu" aria-hidden="true" aria-label="Main navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
